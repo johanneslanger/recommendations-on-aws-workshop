@@ -47,11 +47,10 @@ def handler(event, context):
             "body": "Missing user_id queryString param"
         }
     
-    result_json = invoke_endpoint(user_id)
-    logger.debug("Endpoint returned result: {}".format(result_json))
+    result = invoke_endpoint(user_id)
+    logger.debug("Endpoint returned result: {}".format(result))
     body = {
-       "movies": result_json['labels'],
-       # "distances": result_json['distances'],
+       "itemList": result
     }
 
     
@@ -74,7 +73,10 @@ def invoke_endpoint(user_id):
     Accept='application/jsonlines; verbose=true'
 )
   response = json.loads(response['Body'].read().decode())
-  return response
+  itemList = []
+  for item in response['labels']:
+    itemList.append({'itemId' : str(int(item)) })
+  return itemList
 
 def _getEmbeddingsForUserAsCSV(user_id):
     user= embeddings[user_id-1][:]
