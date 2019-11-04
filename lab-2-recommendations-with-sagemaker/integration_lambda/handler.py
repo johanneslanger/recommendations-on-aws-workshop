@@ -36,8 +36,9 @@ else:
 
 def handler(event, context):
 
+
     # first lets get the requested user id else return error 400
-    if 'user_id' in event['queryStringParameters']:
+    if event['queryStringParameters'] != None and 'user_id' in event['queryStringParameters']:
         user_id = int(event['queryStringParameters']['user_id'])
     else:
         logger.debug('Returning error 400 , missing user_id query string param')
