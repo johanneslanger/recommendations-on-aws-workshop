@@ -49,7 +49,7 @@ This lab will walk you through the following:
     - Select ‘Clone a public Git repository to this notebook instance only’
     - Paste `https://github.com/johanneslanger/recommendations-on-aws-workshop.git` into the Git Repository URL field
     - Now your instance will launch with the latest version of these workshops already on it, in a folder called `recommendations-on-aws-workshop`
-    - You can also add shared repositories if you would like your colleagues to all have aceesss to the same code bases
+    - You can also add shared repositories if you would like your colleagues to all have access to shared libraries etc
 
 1. Scroll down and click on **Create Notebook Instance**
 
