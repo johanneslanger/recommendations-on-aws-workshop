@@ -26,47 +26,35 @@ This lab will walk you through the following:
 
 1. Click on **Amazon SageMaker** from the list of all services by entering *Sagemaker* into the **Find services** box.  This will bring you to the Amazon SageMaker console homepage.  In another browser tab or window, navigate to the **IAM** console homepage, as we'll need that shortly.
 
-  ![Sagemaker console](images/consoleSMSelect.png)
+   ![Sagemaker console](images/consoleSMSelect.png)
 
 1. We'll be doing our Lab today in the North Virginia region (us-east-1). Please make sure that you are working within this region by slecting it from the drop down list on the top right of the console.
 
-  ![Region selection](images/changeRegion.png)
+   ![Region selection](images/changeRegion.png)
 
-2. To create a new Jupyter notebook instance, go to **Notebook instances** in the Amazon SageMaker console, and click the **Create notebook instance** button at the top of the browser window.
+1. To create a new Jupyter notebook instance, go to **Notebook instances** in the Amazon SageMaker console, and click the **Create notebook instance** button at the top of the browser window.
 
-  ![Create notebook instance](images/Picture02.png)Type _[Name]-lab-notebook_ into the **Notebook instance name** text box, and then _ml.t2.medium_ into the **Notebook instance type** field.  Note, for this lab the majority of the work is performed by the Amazon Personalize service and not by your notebook instance, so there is no need to launch a large, compute-optimized C5 or GPU-based instance type - please just use the instance type specified here, as that's all that you need, and using these more powerful, more expensive instance families will not actually help you to complete the workshop any faster.
+   ![Create notebook instance](images/Picture02.png)Type _[Name]-lab-notebook_ into the **Notebook instance name** text box, and then _ml.t2.medium_ into the **Notebook instance type** field.  Note, for this lab the majority of the work is performed by the Amazon Personalize service and not by your notebook instance, so there is no need to launch a large, compute-optimized C5 or GPU-based instance type - please just use the instance type specified here, as that's all that you need, and using these more powerful, more expensive instance families will not actually help you to complete the workshop any faster.
 
-3. In the _IAM role_ field in **Permissions and encryption** section choose _Enter a custom IAM role ARN_.  Now go over into your open **IAM** tab or window, click in the *Search IAM* field, and then enter **AmazonLab** as the search term.  Select the full role name for SageMaker, being careful not to select the *Delete* or *Edit* options.
+1. In the _IAM role_ field in **Permissions and encryption** section choose _Enter a custom IAM role ARN_.  Now go over into your open **IAM** tab or window, click in the *Search IAM* field, and then enter **AmazonLab** as the search term.  Select the full role name for SageMaker, being careful not to select the *Delete* or *Edit* options.
 
-  ![Open Notebook](images/findSagemakerRole.png)
+   ![Open Notebook](images/findSagemakerRole.png)
 
-4. On the resulting detail screen copy the **Role ARN** value - this role will give your SageMaker notebook sufficient IAM priviledges, and full access to both the Personalize and S3 services.  Note, for a Production system you would most likely restrict this role to specific S3 buckets as per your internal requirements, but this workshop allows access to any S3 bucket.  You can now close this tab or window
+1. On the resulting detail screen copy the **Role ARN** value - this role will give your SageMaker notebook sufficient IAM priviledges, and full access to both the Personalize and S3 services.  Note, for a Production system you would most likely restrict this role to specific S3 buckets as per your internal requirements, but this workshop allows access to any S3 bucket.  You can now close this tab or window
 
-5. Go back to your SageMaker screen, and in the *Custom IAM role ARN* field paste in the IAM ARN that you copied in the previous step, scroll down and click on **Create Notebook Instance**
+1. Go back to your SageMaker screen, and in the *Custom IAM role ARN* field paste in the IAM ARN that you copied in the previous step.
 
-6. Wait until the notebook instance status is **InService**. This will take a few minutes once the creation process has started.  Then click on **Open Jupyter** - whilst you're waiting you can perform step #1 of the next section to copy some files from Git
+1. Expand out the optional Git repositories section (note that this step is not optional for the purposes of this workshop).
 
-  ![Open Notebook](images/openNotebook.png)
+    - Select ‘Clone a public Git repository to this notebook instance only’
+    - Paste `https://github.com/johanneslanger/recommendations-on-aws-workshop.git` into the Git Repository URL field
+    - Now your instance will launch with the latest version of these workshops already on it, in a folder called `recommendations-on-aws-workshop`
 
+1. Scroll down and click on **Create Notebook Instance**
 
+1. Wait until the notebook instance status is **InService**. This will take a few minutes once the creation process has started.  Then click on **Open Jupyter**
 
-### Downloading required additional files
-
-We need to download two files before starting work, which are all stored within the Lab's Git repository:
-
-- the Notebook file that contains the lab - **personalize_sample_notebook.ipynb**
-- a file that is part of the MovieLens dataset - **u.item** - that has been edited slightly to remove some control characters that cause on of the _pandas_ library calls to fail, and also to include working URLs for the various movie posters that our application will show later
-
-1. Go to the Git repository address, https://github.com/drandrewkane/AI_ML_Workshops, navigate to the **Lab 6** and download the files called **u.item** and **personalize_sample_notebook.ipynb** respectively.  Use any method that you are comfortable with, but do not clone the whole repository as it is quite large - for instance, try opening the files within Git in RAW format and saving them locally (be careful to maintain the correct file extentions)
-2. In the notebook, assuming the status is now **InService**, and click on the **Upload** button, and in the dialog select the two files from the location that you stored them and upload them.
-
-![Upload files](images/uploadFiles.png)
-
-3. Click on each of the two **Upload** buttons to actually upload the files, waiting for the first to complete before starting the second.
-
-![Upload files part-2](images/uploadFiles2.png)
-
-4. Once both are upload you can click on the notebook **.ipynb** file and the lab notebook will open, and you can now begin to work through the lab notebook.
+   ![Open Notebook](images/openNotebook.png)
 
 ### Working Through a Jupyter Notebook
 
