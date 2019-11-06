@@ -12,55 +12,13 @@ Machine learning is being increasingly used to improve customer engagement by po
 
 This lab will walk you through the following:
 
-- Deploy and configure a *Video Recommendation* application
-- Setting up a Jupyter Notebook environment for the Amazon Personalize Service Preview
+- Setting up a Jupyter Notebook environment for the Amazon Personalize Service Preview(#setup-your-jupyter-notebook-environment)
 - Downloading and preparing training data, based on the Movie Lens 100k data set
 - Importing prepared data into Amazon Personalize
 - Building an ML model based upon the Hierarchical Recurrent Neural Network algorithm (HRNN)
 - Testing your model by deploying an Amazon Personalize campaign
-- Adding your campaign to Video Recommendation application
-
-# Deploy the Video Recommendation App
-
-## Deploy the "Video Recommendation" Application
-
-1. Whilst this application could be deployed anywhere, it uses both an EC2 Amazon Machine Image (AMI) and RDS Snapshot that have been stored in the North Virgina Region of AWS (us-east-1).  Hence, please make sure that the Region selected in the AWS Console is alway **US East (N.Virginia)**, as shown in the following diagram.  The workshop will only function correctly if the EC2 configuration, CloudFormation template executiion and SageMaker notebook are all using this AWS Region.
-
-  ![EC2 Select](images/changeRegion.png)
-
-2. The appication will run on an EC2 instance, but at some point we will need to connect to the server in order to carry out some configuration task.  To do this we need to have an *EC2 Key Pair* configured on the server that you also have access to on your computer; hence, we need to create and download a new one.  Click on **EC2** from the list of all services by entering EC2 into the Find services box.  This will bring you to the Amazon EC2 console home page.
-
-  ![EC2 Select](images/consoleEC2Select.png)
-
-3. On the left-hand menu scroll down until you see **Key Pairs** and select it, and in the resulting dialog click on the **Create Key Pair** button.  This will bring up a **Create Key Pair** dialog, where you need to enter the name of a new key pair - call it *myLabKey* and hit **Create**.  This should automatically download the file, or you may need to manually do so.
-
-  ![Create key pair](images/createKeyPair.png)
-
-4. **Optional** - should you wish to later SSH in to your instance, you need to have your downloaded key-pair from earlier in an accessible location.  It also must not be publicly readable, so if you are on a Mac or Linux system you can fix this with the following command run from the folder where you stored the key, remembering to replace **myLabKey.pem** with your key name!
-
-  ```bash
-  $ chmod 400 myLabKey.pem
-  ```
-
-5. Click on the **Services** dropdown and select **CloudFormation** from the list of all services by entering CloudFormation into the Find services box.  This will bring you to the Amazon CloudFormation console home page.
-
-  ![CFN Service Selection](images/consoleCfnSelect.png)
-
-6. We are going to deploy a pre-built application via a CloudFormation template - this will be a fully-functioning recommendation system, allowing access to multiple Amazon Personalize features.  But it has one drawback - there are no models built into it!  So we will create them in this lab, and when they are ready we will re-configure this application to use them. But first we need to deploy this skeleton application but downloading this file from the workshop repository.  Right-click on the following link and download the template to a file on your local computer, remembering to keep it as a text file with a **.yml** extention.
-
-  https://raw.githubusercontent.com/drandrewkane/AI_ML_Workshops/master/lab-6-Personalize_your_Recommendations/cloudformation_template.yml
-
-7. Click on the **Create Stack** button to start the deployment wizard, and in the **Specify template** section select **Upload a template file**, click on the **Choose file** button, and select the template file that you just downloaded.  Then click on **Next**.
-
-  ![Select CFN Template](images/cfnSelectTemplate.png)
-
-8. The next screen asks for more configuration parameters, but only a few of these are required.  Enter you values for the following, then click **Next** when you're done - you are free to enter new values for the *DjangoAdminLogin* or *DjangoEmailAddress*, but the defaults for these and other parameters are fine.
-
-  1. **Stack name** - enter something simple, as as *LabStack*
-  2. **Parameter - DjangoAdminPassword** - enter a password of your choice
-  3. **Parameter - KeyName** - select your previously-defined EC2 kay-pair
-
-9. There then follows two more screens.  The first is called *Options*, but we have none to enter so just click on **Next**.  The second is the final *Review* screen - verify the parameters, hit the checkbox next to the statement *"I acknowledge that AWS CloudFormation might create IAM resources with custom names."* and then click on **Create stack**.  This will then go and create the environment, which will take around 10-15 minutes minutes.  Unfortunately, we are creating IAM resources, so we cannot continue until it has completed - so read ahead and get a feel for what's coming up next. 
+- Deploy and configure a *Video Recommendation* application(#deploy-the-video-recommendation-app)
+- Adding your campaign to Video Recommendation application(#using-the-video-recommendation-app)
 
 # Setup your Jupyter Notebook environment
 
@@ -150,7 +108,51 @@ We need to download two files before starting work, which are all stored within 
 
    ![](images/recipeRanking.png)
 
-2. You now have three solutions being built off of the same dataset, and all three will slot into the application later.  Please now go back to the notebook and continue to build your recommendation campaign and do some quick testing - if the notebook solution still hasn't completed then you may continue with the first part of the next section, **Finalise Django Framework Configuration**
+2. You now have three solutions being built off of the same dataset, and all three will slot into the application later.  
+3. TODO :: FixMe
+4. Please now go back to the notebook and continue to build your recommendation campaign and do some quick testing - if the notebook solution still hasn't completed then you may continue with the first part of the next section, **Finalise Django Framework Configuration**
+
+# Deploy the Video Recommendation App
+
+## Deploy the "Video Recommendation" Application
+
+1. Whilst this application could be deployed anywhere, it uses both an EC2 Amazon Machine Image (AMI) and RDS Snapshot that have been stored in the North Virgina Region of AWS (us-east-1).  Hence, please make sure that the Region selected in the AWS Console is alway **US East (N.Virginia)**, as shown in the following diagram.  The workshop will only function correctly if the EC2 configuration, CloudFormation template executiion and SageMaker notebook are all using this AWS Region.
+
+  ![EC2 Select](images/changeRegion.png)
+
+2. The appication will run on an EC2 instance, but at some point we will need to connect to the server in order to carry out some configuration task.  To do this we need to have an *EC2 Key Pair* configured on the server that you also have access to on your computer; hence, we need to create and download a new one.  Click on **EC2** from the list of all services by entering EC2 into the Find services box.  This will bring you to the Amazon EC2 console home page.
+
+  ![EC2 Select](images/consoleEC2Select.png)
+
+3. On the left-hand menu scroll down until you see **Key Pairs** and select it, and in the resulting dialog click on the **Create Key Pair** button.  This will bring up a **Create Key Pair** dialog, where you need to enter the name of a new key pair - call it *myLabKey* and hit **Create**.  This should automatically download the file, or you may need to manually do so.
+
+  ![Create key pair](images/createKeyPair.png)
+
+4. **Optional** - should you wish to later SSH in to your instance, you need to have your downloaded key-pair from earlier in an accessible location.  It also must not be publicly readable, so if you are on a Mac or Linux system you can fix this with the following command run from the folder where you stored the key, remembering to replace **myLabKey.pem** with your key name!
+
+  ```bash
+  $ chmod 400 myLabKey.pem
+  ```
+
+5. Click on the **Services** dropdown and select **CloudFormation** from the list of all services by entering CloudFormation into the Find services box.  This will bring you to the Amazon CloudFormation console home page.
+
+  ![CFN Service Selection](images/consoleCfnSelect.png)
+
+6. We are going to deploy a pre-built application via a CloudFormation template - this will be a fully-functioning recommendation system, allowing access to multiple Amazon Personalize features.  But it has one drawback - there are no models built into it!  So we will create them in this lab, and when they are ready we will re-configure this application to use them. But first we need to deploy this skeleton application but downloading this file from the workshop repository.  Right-click on the following link and download the template to a file on your local computer, remembering to keep it as a text file with a **.yml** extention.
+
+  https://raw.githubusercontent.com/drandrewkane/AI_ML_Workshops/master/lab-6-Personalize_your_Recommendations/cloudformation_template.yml
+
+7. Click on the **Create Stack** button to start the deployment wizard, and in the **Specify template** section select **Upload a template file**, click on the **Choose file** button, and select the template file that you just downloaded.  Then click on **Next**.
+
+  ![Select CFN Template](images/cfnSelectTemplate.png)
+
+8. The next screen asks for more configuration parameters, but only a few of these are required.  Enter you values for the following, then click **Next** when you're done - you are free to enter new values for the *DjangoAdminLogin* or *DjangoEmailAddress*, but the defaults for these and other parameters are fine.
+
+  1. **Stack name** - enter something simple, as as *LabStack*
+  2. **Parameter - DjangoAdminPassword** - enter a password of your choice
+  3. **Parameter - KeyName** - select your previously-defined EC2 kay-pair
+
+9. There then follows two more screens.  The first is called *Options*, but we have none to enter so just click on **Next**.  The second is the final *Review* screen - verify the parameters, hit the checkbox next to the statement *"I acknowledge that AWS CloudFormation might create IAM resources with custom names."* and then click on **Create stack**.  This will then go and create the environment, which will take around 10-15 minutes minutes.  Unfortunately, we are creating IAM resources, so we cannot continue until it has completed - so read ahead and get a feel for what's coming up next. 
 
 # Using the Video Recommendation App
 
