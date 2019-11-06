@@ -12,13 +12,13 @@ Machine learning is being increasingly used to improve customer engagement by po
 
 This lab will walk you through the following:
 
-- Setting up a Jupyter Notebook environment for the Amazon Personalize Service Preview(#setup-your-jupyter-notebook-environment)
-- Downloading and preparing training data, based on the Movie Lens 100k data set
-- Importing prepared data into Amazon Personalize
-- Building an ML model based upon the Hierarchical Recurrent Neural Network algorithm (HRNN)
-- Testing your model by deploying an Amazon Personalize campaign
-- Deploy and configure a *Video Recommendation* application(#deploy-the-video-recommendation-app)
-- Adding your campaign to Video Recommendation application(#using-the-video-recommendation-app)
+- [Setting up a Jupyter Notebook environment for the Amazon Personalize Service Preview](#setup-your-jupyter-notebook-environment)
+  - Downloading and preparing training data, based on the Movie Lens 100k data set
+  - Importing prepared data into Amazon Personalize
+  - Building an ML model based upon the Hierarchical Recurrent Neural Network algorithm (HRNN)
+  - Testing your model by deploying an Amazon Personalize campaign
+- [Deploy and configure a *Video Recommendation* application](#deploy-the-video-recommendation-app)
+- [Adding your campaign to Video Recommendation application](#using-the-video-recommendation-app)
 
 # Setup your Jupyter Notebook environment
 
