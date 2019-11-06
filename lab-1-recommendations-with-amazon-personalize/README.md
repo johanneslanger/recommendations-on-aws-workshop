@@ -103,14 +103,14 @@ This lab will walk you through the following:
    ![](images/recipeRanking.png)
 
 2. You now have three solutions being built off of the same dataset, and all three will slot into the application later.  
-3. TODO :: FixMe
-4. Please now go back to the notebook and continue to build your recommendation campaign and do some quick testing - if the notebook solution still hasn't completed then you may continue with the first part of the next section, **Finalise Django Framework Configuration**
+3. You can jump back into the notebook at this stage, and skip down to the `Create and Wait for Campaign` cell, where you will see that we have now deployed a Campaign endpoint, have got some metrics from it, and made some recommendations.
+
 
 # Deploy the Video Recommendation App
 
 ## Deploy the "Video Recommendation" Application
 
-1. Whilst this application could be deployed anywhere, it uses both an EC2 Amazon Machine Image (AMI) and RDS Snapshot that have been stored in the North Virgina Region of AWS (us-east-1).  Hence, please make sure that the Region selected in the AWS Console is alway **US East (N.Virginia)**, as shown in the following diagram.  The workshop will only function correctly if the EC2 configuration, CloudFormation template executiion and SageMaker notebook are all using this AWS Region.
+1. Whilst this application could be deployed anywhere, it uses both an EC2 Amazon Machine Image (AMI) and RDS Snapshot that have been stored in the North Virgina Region of AWS (us-east-1).  Hence, please make sure that the Region selected in the AWS Console is alway **US East (N.Virginia)**, as shown in the following diagram.  The workshop will only function correctly if the EC2 configuration, CloudFormation template execution and SageMaker notebook are all using this AWS Region. ![AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment](https://aws.amazon.com/cloudformation/).
 
   ![EC2 Select](images/changeRegion.png)
 
