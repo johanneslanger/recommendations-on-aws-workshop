@@ -49,12 +49,17 @@ This lab will walk you through the following:
     - Select ‘Clone a public Git repository to this notebook instance only’
     - Paste `https://github.com/johanneslanger/recommendations-on-aws-workshop.git` into the Git Repository URL field
     - Now your instance will launch with the latest version of these workshops already on it, in a folder called `recommendations-on-aws-workshop`
+    - You can also add shared repositories if you would like your colleagues to all have aceesss to the same code bases
 
 1. Scroll down and click on **Create Notebook Instance**
 
 1. Wait until the notebook instance status is **InService**. This will take a few minutes once the creation process has started.  Then click on **Open Jupyter**
 
    ![Open Notebook](images/openNotebook.png)
+
+1. You will be taken to your newly created Jupyter Notebook instance, with our git repo cloned into it. Please click into the folder called `lab-1-recommendations-with-amazon-personalize`, and then onto our Lab 1 notebook, `personalize_sample_notebook.ipynb`.
+
+   ![Enter Lab 1](images/jupyterView.png)
 
 ### Working Through a Jupyter Notebook
 
