@@ -115,7 +115,7 @@ This lab will walk you through the following:
 
 ## Deploy the "Video Recommendation" Application
 
-1. Whilst this application could be deployed anywhere, it uses both an EC2 Amazon Machine Image (AMI) and RDS Snapshot that have been stored in the North Virgina Region of AWS (us-east-1).  Hence, please make sure that the Region selected in the AWS Console is alway **US East (N.Virginia)**, as shown in the following diagram.  The workshop will only function correctly if the EC2 configuration, CloudFormation template execution and SageMaker notebook are all using this AWS Region. ![AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment](https://aws.amazon.com/cloudformation/).
+1. Whilst this application could be deployed anywhere, it uses both an EC2 Amazon Machine Image (AMI) and RDS Snapshot that have been stored in the North Virgina Region of AWS (us-east-1).  Hence, please make sure that the Region selected in the AWS Console is alway **US East (N.Virginia)**, as shown in the following diagram.  The workshop will only function correctly if the EC2 configuration, CloudFormation template execution and SageMaker notebook are all using this AWS Region. [AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment](https://aws.amazon.com/cloudformation/).
 
   ![EC2 Select](images/changeRegion.png)
 
