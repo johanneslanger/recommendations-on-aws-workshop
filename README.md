@@ -1,3 +1,5 @@
+![Workshops](./assets/aws.png)
+
 # Building a recommender system on AWS workshop
 
 In this workshop you will learn how to implement a typical machine learning use case on the AWS platform end-to-end, in this case a recommender system.

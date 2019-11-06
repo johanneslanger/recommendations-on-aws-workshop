@@ -1,4 +1,4 @@
-![Workshops](../banners/aws.png)  ![Workshops](images/personalize.png)  
+![Workshops](../assets/aws.png)  ![Workshops](images/personalize.png)  
 **Last Updated:** September 2019
 
 # Personalize Your Recommendations
