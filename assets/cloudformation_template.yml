@@ -69,7 +69,7 @@ Parameters:
   InstanceAMI:
     Description: EC2 instance AMI for auto-scaling
     Type: String
-    Default: ami-0a1bbc59157225e69
+    Default: ami-0f4cb1e99ad2e0d99
     
   SnapshotArn:
     Description: ARN of the Public RDS Snapshot
@@ -345,6 +345,7 @@ Resources:
           runuser -l ec2-user -c 'cd personalize-video-recs/videorecs; ./runmyserver > /dev/null 2>&1 &'
           sleep 5
           runuser -l ec2-user -c 'cd personalize-video-recs/videorecs; python manage.py createsuperuser2 --username ${DjangoAdminLogin} --password ${DjangoAdminPassword} --noinput --email "${DjangoEmailAddress}" '
+          runuser -l ec2-user -c 'cd personalize-video-recs/videorecs; python manage.py migrate'
 
   PersonalizeEC2Role:
     Type: 'AWS::IAM::Role'
