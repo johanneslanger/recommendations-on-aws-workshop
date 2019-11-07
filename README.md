@@ -22,7 +22,7 @@ Please be sure to terminate all of the resources created after this workshop to 
 
 ## Begin this workshop
 
-**[Proceed to Lab 1](/lab-1-recommendations-with-amazon-personalize)**
+**[Proceed to Lab 0 - Setting up your Amazon SageMaker Jupyter notebook instance](/lab-0-setting-up-your-notebook)**
 
 ### Workshop Clean-Up (Once Complete)
 
@@ -39,4 +39,4 @@ To remove all of the created resources, you can visit the following AWS Consoles
 - [Amazon Sagemaker](https://console.aws.amazon.com/sagemaker/home)
 - [Amazon Personalize](https://us-east-1.console.aws.amazon.com/personalize/home)
 
-[Proceed to Lab 1](/lab-1-recommendations-with-amazon-personalize)
+**[Proceed to Lab 0 - Setting up your Amazon SageMaker Jupyter notebook instance](/lab-0-setting-up-your-notebook)**
