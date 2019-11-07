@@ -1,4 +1,4 @@
-![Workshops](../assets/aws.png)
+![Workshops](../assets/aws.png) ![Workshops](images/sagemaker.png)
 
 # Lab 2 - Training and deploying a custom recommender model using Amazon SageMaker
 
@@ -73,4 +73,6 @@ This is a typical architecture in a microservice based environment. This approac
 - A stable contract between the parts of the application owned by the application development team and the data science team
 - The data science team can easily experiment with new models and change the backend architecture without impacting the business application by simply changing the endpoint of the API Gateway.
 
-1. To create the required Lambda Function and API Gateway open the notebook `2-Integrating-your-endpoint-with-lambda.ipynb` and work through each of the steps
+1. To create the required Lambda Function and API Gateway open the notebook `2-Integrating-your-endpoint-with-lambda.ipynb` and work through each of the steps.
+
+1. As you should now have a working endpoint which you can call, the final step is to integrate this into our movie recommender application.
