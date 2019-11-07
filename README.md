@@ -18,11 +18,17 @@ We will then train and serve our own recommendation machine learning model with 
 
 Please be sure to terminate all of the resources created after this workshop to ensure that you are no longer charged.
 
-### Application Architecture
-
 ## Begin this workshop
 
 **[Proceed to Lab 0 - Setting up your Amazon SageMaker Jupyter notebook instance](/lab-0-setting-up-your-notebook)**
+
+## Workshop structure
+
+This workshop consists of following labs:
+
+- [Lab 0 - Setting up your Amazon SageMaker Jupyter notebook instance](/lab-0-setting-up-your-notebook)
+- [Lab 1 - Providing personalized movie recommendations using Amazon Personalize](/lab-1-recommendations-with-amazon-personalize)
+- [Lab 2 - Training and deploying a custom recommender model using Amazon SageMaker](/lab-2-recommendations-with-sagemaker)
 
 ### Workshop Clean-Up (Once Complete)
 
