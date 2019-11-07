@@ -37,7 +37,9 @@ In this lab we will set up our Jupyter notebook instance so it can be used in th
    - Now your instance will launch with the latest version of these workshops already on it, in a folder called `recommendations-on-aws-workshop`
    - You can also add shared repositories if you would like your colleagues to all have access to shared libraries etc
 
-1. Scroll down and click on **Create Notebook Instance**
+   ![Add github repo to this notebook instance](images/add-repo.png)
+
+2. Scroll down and click on **Create Notebook Instance**
 
 ## Assigning permissions to the notebook instance
 
