@@ -10,10 +10,10 @@ Following figure shows a simplified architecture of this application:
 
 ![Sagemaker console](images/architecture-lab1.png)
 
-Now your startup has become very successful, you where able to hire a team of data scientists. This team consists of experts on recommender systems and wants to have more control over the machine learning workflow.
+Now your startup has become very successful, you where able to hire a team of data scientists. This team consists of experts on recommender systems who want to have more control over the entire machine learning workflow.
 
 To accommodate this we will use [Amazon SageMaker](https://aws.amazon.com/sagemaker/) in this lab.
-Amazon SageMaker is a fully-managed service that covers the entire machine learning workflow to label and prepare your data, choose an algorithm, train the model, tune and optimize it for deployment, make predictions, and take action.
+Amazon SageMaker is a fully-managed service that covers the entire machine learning workflow to label and prepare your data, choose an algorithm, train the model, tune and optimize it for deployment, make predictions, and take action. It allows full flexibility on which machine learning framework to use and also offers built-in algorithms for various use cases.
 
 Throughout this lab we will:
 
@@ -33,7 +33,7 @@ The final architecture will look like this:
 
 Now slowly work through the notebook to train and deploy your first machine learning model.
 
-## Integrating the model into the movie recommender application
+## Deploying the integration lambda function
 
 If you followed the notebook closely, you might have noticed that we have deployed an endpoint which takes a user embedding (simple vector) as input. The user embedding identifies the user and the endpoint returns a list of recommended movie ids in following format
 
@@ -66,7 +66,7 @@ and returns a JSON based list of user id, similar to this:
 {"movies": [814, 1125, 653, 428, 1525, 60, 652, 185, 654, 86, 223, 12, ...]}
 ```
 
-To solve this we will create a Lambda function to integrate both. The Lambda function transforms a given user id into a user embedding required by the SageMaker endpoint. It will then call the endpoint using the AWS SDK and return a list of recommended movies in the required format. The Lambda function will be fronted by a API Gateway.
+To solve this we will create a Lambda function to integrate both. The Lambda function transforms a given user id into a user representation required by the SageMaker endpoint. It will then call the endpoint using the AWS SDK and return a list of recommended movies in the required format. The Lambda function will be fronted by a API Gateway.
 
 This is a typical architecture in a microservice based environment. This approach has following advantages:
 
@@ -75,4 +75,41 @@ This is a typical architecture in a microservice based environment. This approac
 
 1. To create the required Lambda Function and API Gateway open the notebook `2-Integrating-your-endpoint-with-lambda.ipynb` and work through each of the steps.
 
-1. As you should now have a working endpoint which you can call, the final step is to integrate this into our movie recommender application.
+## Integrating the endpoint into the movie recommender app
+
+Now that we have a working REST based endpoint, we are missing only the final step. We need to make sure the movie recommender app calls our endpoint.
+Thankfully the application development team made this configurable for us:
+
+1. Login to the Django Administration site. This is at the same URL as the main application, but replace **/recommend** with **/admin** at the end of the URL, as shown previously in lab 1 in the CloudFormation Outputs panel. This will bring up the following screen, so login now with the credentials that you supplied when you ran the CloudFormation template (Not you might still be logged in and can skip the login screen):
+
+   ![](images/djangoAdmin.png)
+
+1. This brings up the _Site Administration_ screen, which show entries for Groups and Users (which we don't need), but also a section called **Recommend** where you can add **Custom recommendation models** to the app. Click on **+Add** link to begin to add a new model
+
+   ![](images/admin-welcome.png)
+
+1. Now type in a name of your choice into the name field e.g. `sagemaker-knn`
+1. For `model url` provide the URL of the Lambda endpoint. This was the URL of the endpoint which you had to note down in the last notebook.
+1. For `Model sort order` type in `2``
+
+   ![admin](images/django-custom-model.png)
+
+1. Now hit `save`to store the model configuration
+
+1. Switch back to the movie recommender app by replacing **/admin** with **/recommend** in the URL.
+   You should now see the model configuration on the welcome page:
+   ![welcome](images/welcome-screen.png)
+
+1. Now select a user of your choice and you should be able to select the new model in the dropdown and see recommended movies.
+
+   ![welcome](images/result.png)
+
+## Congratulations
+
+You have now successfully trained deployed and integrated your first model with Amazon SageMaker. Feel free to play around with the application and explore the building blocks further in the AWS console e.g. SageMaker, Lambda function, API Gateway, etc..
+
+Of course there is a lot you can do from here to extend this further e.g.
+
+- we have not evaluated our model against a test set yet, you should compute similar metrics based on a test set as for the personalize models to compare these models
+- Instead of using the built-in algorithms you can train your own custom model based on a framework of your choice
+- The process of model training and deployment should be fully automated using a CI/CD pipeline (MLOps)
